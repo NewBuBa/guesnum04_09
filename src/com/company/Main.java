@@ -31,7 +31,7 @@ public class Main {
 ////            }
             System.out.println("YES / NO");
             answer = scan.next();
-            answer = ASK ();
+            answer = ASK();
         } while (answer.equals("Y"));
         System.out.println("Bay");
     }
@@ -42,7 +42,15 @@ public class Main {
 
 
             answer = scan.next();
-        } while (!ASK().equals("y") && (!answer.equals("n")));
+            if (! answer.equals("y") && !answer.equals("n")) {
+                System.out.println("o6ibka");
+                continue;
+            } else {
+                break;
+            }
+
+//        } while (!ASK().equals("y") && (!answer.equals("n")));
+        } while (true);
         return answer;
 
     }
