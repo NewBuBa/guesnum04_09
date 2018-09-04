@@ -27,13 +27,26 @@ public class Main {
                 }
             }
 //            if (userLost == true) {
-//                System.out.println("test 2");
-//            }
-            System.out.println("YEs / NO");
+////                System.out.println("test 2");
+////            }
+            System.out.println("YES / NO");
             answer = scan.next();
+            answer = ASK ();
         } while (answer.equals("Y"));
         System.out.println("Bay");
     }
+
+    static String ASK() {
+        String answer;
+        do {
+
+
+            answer = scan.next();
+        } while (!ASK().equals("y") && (!answer.equals("n")));
+        return answer;
+
+    }
+
 }
 
 
