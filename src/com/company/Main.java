@@ -58,9 +58,10 @@ public class Main {
 
         String answer;
         do {
+
             System.out.print("Enter name: ");
             String userName = scan.next();
-
+            long t1 = System.currentTimeMillis();
             int mynum = randm.nextInt(100);
 
             System.out.println(mynum);
@@ -78,6 +79,9 @@ public class Main {
                     r.name = userName;
                     r.tries = i+1;
                     result.add(r);
+                    long t2 = System.currentTimeMillis();
+                    long time1 = (t2-t1)/1000;
+                    r.time = time1;
                     break;
                 }
             }
@@ -98,7 +102,7 @@ public class Main {
 
     private static void showresult() {
         for(GameResult r : result){
-            System.out.println(r.name + " result= " + r.tries );
+            System.out.println(r.name + " tries= " + r.tries + " time " + r.time + "sec" );
 
         }
     }
