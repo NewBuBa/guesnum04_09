@@ -8,12 +8,12 @@ import java.util.*;
 //
 //    public static void main(String[] args) {
 //        System.out.println("Do you want play? Write yes or no");
-//
-//
+
+
 //        while (true) {
 //
 //            String word = scan.next();
-//            if (Objects.equals( word, "yes")) {
+//           if (Objects.equals( word, "yes")) {
 //                int mynum = randm.nextInt(100);
 //                System.out.println(mynum);
 //
@@ -45,24 +45,24 @@ import java.util.*;
 //
 //    }
 //}
+//
 
 
-public class Main<results> {
+
+public class Main {
     static Random randm = new Random();
     static Scanner scan = new Scanner(System.in);
-//static List<String> name = new ArrayList<>();
-    static List<GameResult> result = new ArrayList<>();
-    private static String name;
-    for (GameResult r : results)(
-System.out.println(r.name + " ->" + r .triesCout);
+    static List<GameResult> result = new ArrayList();
     public static void main(String[] args) {
 
 
         String answer;
         do {
+            System.out.print("Enter name: ");
+            String userName = scan.next();
+
             int mynum = randm.nextInt(100);
-            System.out.println("VA6 EIMJE!");
-            String USerName = scan.next();
+
             System.out.println(mynum);
             boolean userlost = true;
             for (int i = 0; i < 10; i++) {
@@ -75,10 +75,9 @@ System.out.println(r.name + " ->" + r .triesCout);
                     System.out.println("Оба числа равны!");
                     userlost = false;
                     GameResult r = new GameResult();
-                    r.name = name;
-                    i.triesCount =i;
-                    results.add(r);
-                    
+                    r.name = userName;
+                    r.tries = i+1;
+                    result.add(r);
                     break;
                 }
             }
@@ -91,9 +90,19 @@ System.out.println(r.name + " ->" + r .triesCout);
         }
 
         while (answer.equals("y"));
+
+        showresult();
+
         System.out.println("Bye");
     }
-showResults();
+
+    private static void showresult() {
+        for(GameResult r : result){
+            System.out.println(r.name + " result= " + r.tries );
+
+        }
+    }
+
     static String askYN() {
         String answer;
         do {
@@ -112,7 +121,13 @@ showResults();
     static int askNum() {
         int answer;
         do {
-            answer = scan.nextInt();
+            try {
+                answer = scan.nextInt();
+            } catch (InputMismatchException a ){
+                System.out.println("This is not number");
+                scan.next();
+                continue;
+            }
             if (answer < 0 ) {
                 System.out.println("Number less then 0");
             }
