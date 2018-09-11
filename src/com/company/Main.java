@@ -1,8 +1,6 @@
 package com.company;
 
-import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 //public class Main {
 //    static Random randm = new Random();
@@ -52,14 +50,15 @@ import java.util.Scanner;
 public class Main {
     static Random randm = new Random();
     static Scanner scan = new Scanner(System.in);
-
+static List<String> name = new ArrayList<>();
     public static void main(String[] args) {
 
 
         String answer;
         do {
             int mynum = randm.nextInt(100);
-
+            System.out.println("VA6 EIMJE!");
+            String USerName = scan.next();
             System.out.println(mynum);
             boolean userlost = true;
             for (int i = 0; i < 10; i++) {
