@@ -47,10 +47,14 @@ import java.util.*;
 //}
 
 
-public class Main {
+public class Main<results> {
     static Random randm = new Random();
     static Scanner scan = new Scanner(System.in);
-static List<String> name = new ArrayList<>();
+//static List<String> name = new ArrayList<>();
+    static List<GameResult> result = new ArrayList<>();
+    private static String name;
+    for (GameResult r : results)(
+System.out.println(r.name + " ->" + r .triesCout);
     public static void main(String[] args) {
 
 
@@ -70,6 +74,11 @@ static List<String> name = new ArrayList<>();
                 } else if (scanNum == mynum) {
                     System.out.println("Оба числа равны!");
                     userlost = false;
+                    GameResult r = new GameResult();
+                    r.name = name;
+                    i.triesCount =i;
+                    results.add(r);
+                    
                     break;
                 }
             }
@@ -84,7 +93,7 @@ static List<String> name = new ArrayList<>();
         while (answer.equals("y"));
         System.out.println("Bye");
     }
-
+showResults();
     static String askYN() {
         String answer;
         do {
