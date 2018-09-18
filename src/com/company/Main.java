@@ -100,19 +100,17 @@ public class Main {
 //    }
 
     private static void showresult() {
-        int count = Math.min(5, results.size());
-        if (results.size()<5){
-            count = results.size();
+        //int count = Math.min(5, results.size());
+        results.stream()
+                .filter(r-> r.name.equals ("TEST"))
+                .limit(5)
+                .forEach(r -> {
+                    System.out.printf("%s %d %d\n", r.name, r.tries, r.time);
+                });
+
+
+
         }
-        for (int i = 0; i<count; i++) {
-            GameResult r = results.get(i);
-            System.out.printf("%s %d %d\n", r.name, r.tries, r.time);
-
-
-
-
-        }
-    }
 
     static String askYN() {
         String answer;
