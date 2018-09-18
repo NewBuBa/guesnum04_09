@@ -1,5 +1,8 @@
 package com.company;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 //public class Main {
@@ -48,11 +51,11 @@ import java.util.*;
 //
 
 
-
 public class Main {
     static Random randm = new Random();
     static Scanner scan = new Scanner(System.in);
     static List<GameResult> result = new ArrayList();
+
     public static void main(String[] args) {
 
 
@@ -77,10 +80,10 @@ public class Main {
                     userlost = false;
                     GameResult r = new GameResult();
                     r.name = userName;
-                    r.tries = i+1;
+                    r.tries = i + 1;
                     result.add(r);
                     long t2 = System.currentTimeMillis();
-                    long time1 = (t2-t1)/1000;
+                    long time1 = (t2 - t1) / 1000;
                     r.time = time1;
                     break;
                 }
@@ -95,14 +98,27 @@ public class Main {
 
         while (answer.equals("y"));
 
-        showresult();
-
+        showResult();
+        saveResult();
         System.out.println("Bye");
     }
 
+    private static void showResult() {
+    }
+
+    private static void saveResult() {
+        File file = new File("top_score.txt");
+        try (PrintWriter out = new PrintWriter(file)) {
+            out.println("HELLO world");
+
+        } catch (IOException e) {
+            System.out.println("Cannot save to file");
+        }
+    }
+
     private static void showresult() {
-        for(GameResult r : result){
-            System.out.println(r.name + " tries=" + r.tries + "  time=" + r.time + " sec" );
+        for (GameResult r : result) {
+            System.out.println(r.name + " tries=" + r.tries + "  time=" + r.time + " sec");
 
         }
     }
@@ -127,21 +143,24 @@ public class Main {
         do {
             try {
                 answer = scan.nextInt();
-            } catch (InputMismatchException a ){
+            } catch (InputMismatchException a) {
                 System.out.println("This is not number");
                 scan.next();
                 continue;
             }
-            if (answer < 0 ) {
+            if (answer < 0) {
                 System.out.println("Number less then 0");
-            }
-            else if (answer > 100){
+            } else if (answer > 100) {
                 System.out.println("Number more then 100");
 
-            } else{
+            } else {
                 return answer;
             }
         }
-        while(true);
+        while (true);
+    }
+
+
+    private static void println() {
     }
 }
