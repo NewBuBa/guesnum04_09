@@ -5,50 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
-//public class Main {
-//    static Random randm = new Random();
-//    static Scanner scan = new Scanner(System.in);
-//
-//    public static void main(String[] args) {
-//        System.out.println("Do you want play? Write yes or no");
-
-
-//        while (true) {
-//
-//            String word = scan.next();
-//           if (Objects.equals( word, "yes")) {
-//                int mynum = randm.nextInt(100);
-//                System.out.println(mynum);
-//
-//                boolean userlost = true;
-//                for (int i = 0; i < 10; i++) {
-//                    int scanNum = scan.nextInt();
-//
-//                    if (scanNum > mynum) {
-//                        System.out.println("Моё число больше!");
-//                    } else if (scanNum < mynum) {
-//                        System.out.println("Моё число меньше!");
-//                    } else if (scanNum == mynum) {
-//                        System.out.println("Оба числа равны!");
-//                        userlost = false;
-//break;
-//                    }
-//
-//                }
-//                if (userlost == true) {
-//                    System.out.println("You lost");
-//                }
-//                System.out.println("Do you want play again? Write yes or no");
-//            } else {
-//                break;
-//            }
-//        }
-//        System.out.println("Game is finished!");
-//
-//
-//    }
-//}
-//
 
 
 public class Main {
@@ -109,7 +65,11 @@ public class Main {
     private static void saveResult() {
         File file = new File("top_score.txt");
         try (PrintWriter out = new PrintWriter(file)) {
-            out.println("HELLO world");
+          //  out.println();
+            for (GameResult r : result) {
+                out.println(r.name + " tries=" + r.tries + "  time=" + r.time + " sec");
+
+            }
 
         } catch (IOException e) {
             System.out.println("Cannot save to file");
