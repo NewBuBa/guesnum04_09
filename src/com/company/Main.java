@@ -17,7 +17,6 @@ public class Main {
         saveresult();
         String answer;
         do {
-
             System.out.print("Enter name: ");
             String userName = scan.next();
 
@@ -88,9 +87,29 @@ public class Main {
         }
     }
 
+//    private static void showresult() {
+//        int count = 0;
+//        for (GameResult r : results) {
+//            System.out.printf("name- %s  tries- %d  sec- %d \n", r.name, r.tries, r.time);
+//            count++;
+//            if(count == 5){
+//                break;
+//
+//}
+//        }
+//    }
+
     private static void showresult() {
-        for (GameResult r : results) {
-            System.out.printf("name- %s  tries- %d  sec- %d \n", r.name, r.tries, r.time);
+        int count = 5;
+        if (results.size()<5){
+            count = results.size();
+        }
+        for (int i = 0; i<count; i++) {
+            GameResult r = results.get(i);
+            System.out.printf("%s %d %d\n", r.name, r.tries, r.time);
+
+
+
 
         }
     }
