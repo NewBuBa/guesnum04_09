@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import java.util.*;
 
 
-
 public class Main {
     static Random randm = new Random();
     static Scanner scan = new Scanner(System.in);
@@ -65,9 +64,9 @@ public class Main {
     private static void saveResult() {
         File file = new File("top_score.txt");
         try (PrintWriter out = new PrintWriter(file)) {
-          //  out.println();
+            //  out.println();
             for (GameResult r : result) {
-                out.println(r.name + " tries=" + r.tries + "  time=" + r.time + " sec");
+                out.printf("%s %d %d\n",  r.name, r.tries, r.time);
 
             }
 
@@ -78,8 +77,9 @@ public class Main {
 
     private static void showresult() {
         for (GameResult r : result) {
-            System.out.println(r.name + " tries=" + r.tries + "  time=" + r.time + " sec");
-
+          //  System.out.println(r.name + " tries=" + r.tries + "  time=" + r.time + " sec");
+          //  System.out.printf("%s %d %dsec\n",  r.name, r.tries, r.time / 1000);
+            System.out.printf("%s - %d - %.2fsec\n",  r.name, r.tries, r.time / 1000);
         }
     }
 
