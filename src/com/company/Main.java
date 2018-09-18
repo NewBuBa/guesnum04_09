@@ -63,7 +63,7 @@ public class Main {
     private static void loudresult() {
         File file = new File("top_result.txt");
         try (Scanner in = new Scanner(file)) {
-            while(in.hasNext()) {
+            while (in.hasNext()) {
                 GameResult result = new GameResult();
                 result.name = in.next();
                 result.tries = in.nextInt();
@@ -98,19 +98,31 @@ public class Main {
 //}
 //        }
 //    }
+//
+//    private static void showresult() {
+//        int a = Math.min(5, results.size());
+//
+//        for (int i = 0; i<a; i++) {
+//            GameResult r = results.get(i);
+//            System.out.printf("%s %d %d\n", r.name, r.tries, r.time);
+//
+//
+//
+//
+//        }
+//    }
+
 
     private static void showresult() {
-        //int count = Math.min(5, results.size());
         results.stream()
-                .filter(r-> r.name.equals ("TEST"))
+                .sorted(Comparator.<GameResult>comparingInt(r-> r.tries).thenComparingLong(r-> r.time))
+
+                //     .filter(r-> r.name.equals("roma")) //фильтр по имени
                 .limit(5)
-                .forEach(r -> {
+                .forEach(r-> {
                     System.out.printf("%s %d %d\n", r.name, r.tries, r.time);
                 });
-
-
-
-        }
+    }
 
     static String askYN() {
         String answer;
