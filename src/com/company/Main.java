@@ -100,7 +100,7 @@ public class Main {
 //    }
 
     private static void showresult() {
-        int count = 5;
+        int count = Math.min(5, results.size());
         if (results.size()<5){
             count = results.size();
         }
