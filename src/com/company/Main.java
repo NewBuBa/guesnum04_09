@@ -102,7 +102,7 @@ public class Main {
 
     private static void showresult() {
         for(GameResult r : result){
-            System.out.println(r.name + " tries= " + r.tries + " time " + r.time + "sec" );
+            System.out.println(r.name + " tries=" + r.tries + "  time=" + r.time + " sec" );
 
         }
     }
