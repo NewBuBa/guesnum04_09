@@ -9,16 +9,18 @@ import java.util.*;
 public class Main {
     static Random randm = new Random();
     static Scanner scan = new Scanner(System.in);
-    static List<GameResult> result = new ArrayList();
+    static List<GameResult> results = new ArrayList();
 
     public static void main(String[] args) {
+        loudresult();
 
-
+        saveresult();
         String answer;
         do {
 
             System.out.print("Enter name: ");
             String userName = scan.next();
+
             long t1 = System.currentTimeMillis();
             int mynum = randm.nextInt(100);
 
@@ -36,10 +38,11 @@ public class Main {
                     GameResult r = new GameResult();
                     r.name = userName;
                     r.tries = i + 1;
-                    result.add(r);
+                    results.add(r);
                     long t2 = System.currentTimeMillis();
                     long time1 = (t2 - t1) / 1000;
                     r.time = time1;
+                    saveresult();
                     break;
                 }
             }
@@ -53,33 +56,42 @@ public class Main {
 
         while (answer.equals("y"));
 
-        showResult();
-        saveResult();
+        showresult();
+
         System.out.println("Bye");
     }
 
-    private static void showResult() {
-    }
-
-    private static void saveResult() {
-        File file = new File("top_score.txt");
-        try (PrintWriter out = new PrintWriter(file)) {
-            //  out.println();
-            for (GameResult r : result) {
-                out.printf("%s %d %d\n",  r.name, r.tries, r.time);
+    private static void loudresult() {
+        File file = new File("top_result.txt");
+        try (Scanner in = new Scanner(file)) {
+            while(in.hasNext()) {
+                GameResult result = new GameResult();
+                result.name = in.next();
+                result.tries = in.nextInt();
+                result.time = in.nextInt();
+                results.add(result);
 
             }
+        } catch (IOException e) {
+            System.out.println("Cannot save to file");
+        }
+    }
 
+    private static void saveresult() {
+        File file = new File("top_result.txt");
+        try (PrintWriter out = new PrintWriter(file)) {
+            for (GameResult r : results) {
+                out.printf("%s %d %d\n", r.name, r.tries, r.time);
+            }
         } catch (IOException e) {
             System.out.println("Cannot save to file");
         }
     }
 
     private static void showresult() {
-        for (GameResult r : result) {
-          //  System.out.println(r.name + " tries=" + r.tries + "  time=" + r.time + " sec");
-          //  System.out.printf("%s %d %dsec\n",  r.name, r.tries, r.time / 1000);
-            System.out.printf("%s - %d - %.2fsec\n",  r.name, r.tries, r.time / 1000);
+        for (GameResult r : results) {
+            System.out.printf("name- %s  tries- %d  sec- %d \n", r.name, r.tries, r.time);
+
         }
     }
 
@@ -118,9 +130,5 @@ public class Main {
             }
         }
         while (true);
-    }
-
-
-    private static void println() {
     }
 }
